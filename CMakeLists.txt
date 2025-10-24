@@ -3,4 +3,6 @@ project(chip8_emu C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(chip8_emu main.c)
+add_executable(chip8_emu main.c
+        src/logger/log.c
+        src/logger/log.h)
