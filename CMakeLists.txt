@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.0)
+project(chip8_emu C)
+
+set(CMAKE_C_STANDARD 11)
+
+add_executable(chip8_emu main.c)
