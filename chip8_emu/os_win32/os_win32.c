@@ -1,7 +1,7 @@
 #include "os_win32.h"
 
 #include <stdint.h>
-#include <stdlib.h>
+#include <stdbool.h>
 #include <Windows.h>
 
 
@@ -14,12 +14,14 @@ struct win32_ctx_t {
 
 	HINSTANCE hinstance;
 	HWND hwnd;
+
+	bool is_running;
 };
 
 
 ///////////////////////////////////////////////////////////////////////////////
 
-static int create_window(win32_ctx_t *win32_ctx, char *title);
+static int create_window(win32_ctx_t *win32_ctx, const char *title);
 LRESULT CALLBACK wndproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -29,7 +31,7 @@ win32_status_t win32_ctx_create(
 	win32_ctx_t **pout_win32_ctx,
 	uint32_t x_dim,
 	uint32_t y_dim,
-	char *title
+	const char *title
 )
 {
 	win32_status_t status = WIN32_STATUS_OK;
@@ -67,9 +69,31 @@ void win32_ctx_destroy(win32_ctx_t *win32_ctx)
 }
 
 
+void win32_ctx_process_messages(win32_ctx_t* win32_ctx)
+{
+	MSG msg = { 0 };
+	while (PeekMessageA(&msg, NULL, 0, 0, PM_REMOVE)) {
+		TranslateMessage(&msg);
+		DispatchMessageA(&msg);
+	}
+}
+
+
+void win32_ctx_start(win32_ctx_t* win32_ctx)
+{
+	win32_ctx->is_running = true;
+}
+
+
+bool win32_ctx_is_running(const win32_ctx_t* win32_ctx)
+{
+	return win32_ctx->is_running;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 
-static int create_window(win32_ctx_t *win32_ctx, char *title)
+static int create_window(win32_ctx_t *win32_ctx, const char *title)
 {
 	win32_status_t status = WIN32_STATUS_OK;
 	WNDCLASSA wc = { 0 };
@@ -136,6 +160,13 @@ error:
 LRESULT CALLBACK wndproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	win32_ctx_t *ctx = (win32_ctx_t *)GetWindowLongPtrA(hwnd, GWLP_USERDATA);
+
+	switch (uMsg)
+	{
+		case WM_CLOSE:
+			ctx->is_running = false;
+			return 0;
+	}
 
 	return DefWindowProcA(hwnd, uMsg, wParam, lParam);
 }

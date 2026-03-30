@@ -16,9 +16,11 @@ int main(void) {
 		goto win32_error;
 	}
 
-	// dummy main loop
-	for (int i = 0; i < 99999; i++) {
-		printf("Running...\n");
+	win32_ctx_start(win32_ctx);
+
+	while (win32_ctx_is_running(win32_ctx))
+	{
+		win32_ctx_process_messages(win32_ctx);
 	}
 
 	win32_ctx_destroy(win32_ctx);

@@ -2,6 +2,7 @@
 #define OS_WIN32_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 
 
 typedef enum win32_status_t {
@@ -20,11 +21,16 @@ win32_status_t win32_ctx_create(
 	win32_ctx_t **pout_win32_ctx,
 	uint32_t x_dim,
 	uint32_t y_dim,
-	char *title
+	const char *title
 );
 
-
 void win32_ctx_destroy(win32_ctx_t *win32_ctx);
+
+void win32_ctx_process_messages(win32_ctx_t* win32_ctx);
+
+void win32_ctx_start(win32_ctx_t* win32_ctx);
+
+bool win32_ctx_is_running(const win32_ctx_t* win32_ctx);
 
 
 #endif // !OS_WIN32_H_
