@@ -35,6 +35,7 @@ win32_status_t win32_ctx_create(
 )
 {
 	win32_status_t status = WIN32_STATUS_OK;
+
 	win32_ctx_t *win32_ctx = calloc(1, sizeof(*win32_ctx));
 	if (!win32_ctx) {
 		status = WIN32_STATUS_OUT_OF_MEMORY;

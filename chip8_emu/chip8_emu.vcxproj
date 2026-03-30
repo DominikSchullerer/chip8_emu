@@ -125,10 +125,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="chip8\chip8.c" />
+    <ClCompile Include="chip8\chip8_cpu.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="os_win32\os_win32.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="chip8\chip8.h" />
+    <ClInclude Include="chip8\chip8_cpu.h" />
+    <ClInclude Include="chip8\chip8_status.h" />
     <ClInclude Include="os_win32\os_win32.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
