@@ -39,6 +39,9 @@
     <ClCompile Include="chip8\chip8_cpu.c">
       <Filter>Source Files\chip8</Filter>
     </ClCompile>
+    <ClCompile Include="chip8\chip8_memory.c">
+      <Filter>Source Files\chip8</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="os_win32\os_win32.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files\chip8</Filter>
     </ClInclude>
     <ClInclude Include="chip8\chip8_status.h">
+      <Filter>Header Files\chip8</Filter>
+    </ClInclude>
+    <ClInclude Include="chip8\chip8_memory.h">
       <Filter>Header Files\chip8</Filter>
     </ClInclude>
   </ItemGroup>

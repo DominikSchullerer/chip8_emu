@@ -3,7 +3,8 @@
 
 typedef enum chip8_status_t {
 	CHIP8_STATUS_OK,
-	CHIP8_STATUS_OUT_OF_MEMORY
+	CHIP8_STATUS_OUT_OF_MEMORY,
+	CHIP8_STATUS_OUT_OF_BOUNDS
 } chip8_status_t;
 
 #endif // !_CHIP8_STATUS_H_

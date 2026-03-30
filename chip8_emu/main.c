@@ -11,7 +11,7 @@
 #define X_RES	640
 #define Y_RES	320
 #define TITLE	"Chip8 Emulator"
-#define ROM_PATH ".\\..\\chip8_test_suite\\1-chip8-logo.ch8"
+#define ROM_PATH "./../chip8_test_suite/1-chip8-logo.ch8"
 
 
 static int load_rom(const char* path, chip8_t* chip8);
@@ -61,7 +61,6 @@ error:
 
 static int load_rom(const char* path, chip8_t* chip8)
 {
-	printf("load_rom: %s\n", path);
 	FILE* rom_file = fopen(path, "rb");
 	if (!rom_file) {
 		printf("Failed to open ROM file: %s\n", path);
@@ -90,7 +89,12 @@ static int load_rom(const char* path, chip8_t* chip8)
 
 	fclose(rom_file);
 
-	// TODO: Load ROM data into Chip8 memory
+	if (chip8_ctx_load_rom(chip8, rom_data, rom_size) != CHIP8_STATUS_OK) {
+		printf("Failed to load ROM into Chip8\n");
+		free(rom_data);
+		return -1;
+	}
 
+	free(rom_data);
 	return 0;
 }
