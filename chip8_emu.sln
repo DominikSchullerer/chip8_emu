@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11620.152 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6A47AE60-0BB1-4C2F-979D-D229F231356D}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +11,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chip8_emu", "chip8_emu\chip8_emu.vcxproj", "{AF83225B-CC2C-43F4-B3A5-DF41C8667B52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test_suite", "test_suite", "{130CAB4B-9D6E-4F2A-811F-DEBB2E71CDEC}"
+	ProjectSection(SolutionItems) = preProject
+		chip8_test_suite\1-chip8-logo.ch8 = chip8_test_suite\1-chip8-logo.ch8
+		chip8_test_suite\2-ibm-logo.ch8 = chip8_test_suite\2-ibm-logo.ch8
+		chip8_test_suite\3-corax+.ch8 = chip8_test_suite\3-corax+.ch8
+		chip8_test_suite\4-flags.ch8 = chip8_test_suite\4-flags.ch8
+		chip8_test_suite\5-quirks.ch8 = chip8_test_suite\5-quirks.ch8
+		chip8_test_suite\6-keypad.ch8 = chip8_test_suite\6-keypad.ch8
+		chip8_test_suite\7-beep.ch8 = chip8_test_suite\7-beep.ch8
+		chip8_test_suite\8-scrolling.ch8 = chip8_test_suite\8-scrolling.ch8
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
